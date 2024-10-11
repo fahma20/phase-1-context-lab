@@ -1,5 +1,66 @@
 /* Your Code Here */
+function createEmployeeRecord (array) {
+    return {
+      firstName: array[0],
+      familyName: array [1],
+      title: array [2],
+      payPerHour: array [3],
+      timeInEvents: [],
+      timeOutEvents: []
+    };
+  }
+  function createEmployeeRecords(employeeArrays) {
+    return employeeArrays.map(createEmployeeRecord);
+  }
+  function createTimeInEvent(dateStamp) {
+    const [date, hour] = dateStamp.split(' ');
+    const timeInEvent = {
+        type: "TimeIn",
+        hour: parseInt(hour),
+        date: date
+      };
+      this.timeInEvents.push(timeInEvent);
+      return this;
+    }
+    function createTimeOutEvent(dateStamp) {
+        const [date, hour] = dateStamp.split(" ");
+        const timeOutEvent = {
+            type: "TimeOut",
+            hour: parseInt(hour, 10),
+            date: date
+        };
+        this.timeOutEvents.push(timeOutEvent);
+        return this;
+    }
+    
+    function hoursWorkedOnDate(date) {
+        const timeInEvent = this.timeInEvents.find(event => event.date === date);
+        const timeOutEvent = this.timeOutEvents.find(event => event.date === date);
+        return (timeOutEvent.hour - timeInEvent.hour) / 100; // Assuming time is in HHMM format
+    }
+    
+    function wagesEarnedOnDate(date) {
+        const hoursWorked = hoursWorkedOnDate.call(this, date);
+        return hoursWorked * this.payPerHour;
+    }
+    
+    function findEmployeeByFirstName(srcArray, firstName) {
+        return srcArray.find(employee => employee.firstName === firstName);
+    }
+    
+    function calculatePayroll(employeeRecords) {
+        return employeeRecords.reduce((total, employee) => {
+            return total + allWagesFor.call(employee);
+        }, 0);
+    }
+    
 
+
+
+
+
+    
+  
 /*
  We're giving you this function. Take a look at it, you might see some usage
  that's new and different. That's because we're avoiding a well-known, but
